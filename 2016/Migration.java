@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Migration {
-    public static int[][] grid = new int[100][100];
+    public static int[][] grid = new int[10][10];
 
     public static int[] getPosition(int p) {
         p--;
-        return new int[]{Math.floorDiv(p, 5) + 50, (p%5) + 50};//y, x
+        return new int[]{Math.floorDiv(p, 5) + 5, (p%5) + 5};//y, x
     }
 
     public static void clear(int x, int y) {
@@ -18,12 +18,12 @@ public class Migration {
             if (grid[i][j] >= 4) {
                 grid[i][j] -= 4;
                 for (int k = -1; k <= 1; k+= 2) {
-                    grid[x + k][y]++;
-                    list.add(x+k); list.add(y);
+                    grid[i + k][j]++;
+                    list.add(i+k); list.add(j);
                 }
                 for (int k = -1; k <= 1; k+= 2) {
-                    grid[x][y + k]++;
-                    list.add(x); list.add(y+k);
+                    grid[i][j + k]++;
+                    list.add(i); list.add(j+k);
                 }
             }
             list.remove(0); list.remove(0);
@@ -49,8 +49,8 @@ public class Migration {
             clear(c[0], c[1]);
             j = ++j % ss.length;
         }
-        for (int i = 50; i < 55; i++) {
-            for (int k  = 50; k < 55; k++) {
+        for (int i = 5; i < 10; i++) {
+            for (int k  = 5; k < 10; k++) {
                 System.out.print(grid[i][k] + " ");
             }
             System.out.println();
