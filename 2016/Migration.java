@@ -5,8 +5,7 @@ public class Migration {
     public static int[][] grid = new int[100][100];
 
     public static int[] getPosition(int p) {
-        p--;
-        return new int[]{Math.floorDiv(p, 5) + 50, (p%5) + 50};//y, x
+        return new int[]{Math.floorDiv((p - 1), 5) + 50, ((p - 1)%5) + 50};//y, x
     }
 
     public static void clear(int x, int y) {
