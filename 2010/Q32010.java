@@ -1,5 +1,5 @@
 import java.util.*;
-
+//not done
 public class Q32010 {
     public static class Jug {
         private int cap;
