@@ -1,5 +1,5 @@
 import java.util.HashSet; //fails test 19 due to time exceeded and 20 due to halting on subtasks 2 and 4
-import java.util.Scanner;
+import java.util.Scanner; //could probably make possible crosses more efficiently
 
 public class Crossing {
     public static void main(String[] args) {
