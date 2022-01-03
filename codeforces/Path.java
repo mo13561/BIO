@@ -1,7 +1,7 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Scanner;
-//half works
+
 public class Path {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {

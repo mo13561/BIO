@@ -1,25 +1,45 @@
 import java.util.Scanner;
 
 public class test {
+    static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(is2(sc.nextInt()));
-    }
-    private static boolean isPrime(long i) {
-        if (i == 2) return true;
-        if (i == 1 || i == 0 || i % 2 == 0) return false;
-        for (int j = 3; j < i; j++) {
-            if (i % j == 0) return false;
+        int t = sc.nextInt(); sc.nextLine();
+        for (int i = 0; i < t; i++) {
+            solve();
         }
-        return true;
     }
-    private static boolean is2(int n) {
-        if (n == 1 || n == 2) return true;
-        if (n == 0 || n % 2 != 0) return false;
-        while (n != 1) {
-            if (n % 2 != 0) return false;
-            n /= 2;
+
+    private static void solve() {
+        int n = sc.nextInt(); sc.nextLine();
+        String s = sc.nextLine();
+        if (s.length() == 1) {
+            System.out.println(s + s);
+            return;
         }
-        return true;
+        int cur = s.charAt(0);
+        String hold = "";
+        String ans = "" + s.charAt(0);
+        boolean it = false;
+        for (int i = 1; i < s.length(); i++) {
+            int x = s.charAt(i);
+            if (cur > x) {
+                ans += s.charAt(i);
+                cur = s.charAt(i);
+                it = true;
+            } else if (cur == x && it) {
+                hold += s.charAt(i);
+            } else if (cur < x && it) {
+                ans += hold;
+                break;
+            } else {
+                break;
+            }
+        }
+        int sz = ans.length();
+        for (int i = sz - 1; i >= 0; i--) {
+            ans += ans.charAt(i);
+        }
+        System.out.println(ans);
     }
 }
