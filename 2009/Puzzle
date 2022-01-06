@@ -1,0 +1,50 @@
+import javafx.scene.transform.Scale;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Puzzle {
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        solve();
+    }
+
+    public static void solve() {
+        char[][] g = new char[4][4];
+        for (int i = 0; i < 4; i++) {
+            String s = sc.nextLine();
+            for (int j = 0; j < 4; j++) g[i][j] = s.charAt(j);
+        }
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            getPoints(g);
+            g = makeGrid(g);
+        }
+    }
+
+    private static char[][] makeGrid(char[][] g) {
+        return null;
+    }
+
+    private static void getPoints(char[][] g) {
+        ArrayList<Integer> q = new ArrayList<>();
+        for (int i = 0; i < 16; i++) q.add(i);
+        while (q.size() > 0) {
+            int curr = q.get(0);
+            int r = Math.floorDiv(curr, 4);
+            int c = curr % 4;
+            for (int i = -1; i <= 1; i+=2) {
+                for (int j = -1; j <= 1; j+=2) {
+                    if (r+i < 4 && r + i > -1 && c + j < 4 && c + j > -1) {
+                        if (g[r+i][c+j] == g[r][c]) {
+                            int element = 4 * (r + i) + c + j;
+                            q.remove(q.indexOf(element));
+                            q.add(1, element);
+                        }
+                    }
+                }
+                q.remove(0);
+            }
+        }
+    }
+}
